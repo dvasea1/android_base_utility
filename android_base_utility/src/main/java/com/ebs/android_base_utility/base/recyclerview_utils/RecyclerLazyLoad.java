@@ -88,9 +88,9 @@ public class RecyclerLazyLoad {
             this.recyclerView.addItemDecoration(itemDecoration);
         }
         if(activity!=null) {
-            if(headerAndFooterRecyclerViewAdapter == null) {
+            //if(headerAndFooterRecyclerViewAdapter == null) {
                 headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
-            }
+           // }
             this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
             setScroll();
         } else {
