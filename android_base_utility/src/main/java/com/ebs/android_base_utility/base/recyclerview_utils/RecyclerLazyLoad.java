@@ -44,23 +44,26 @@ public class RecyclerLazyLoad {
     private Boolean next;
     private boolean endlessScroll = true;
 
-    public RecyclerLazyLoad(FragmentActivity activity, RecyclerView recyclerView, RecyclerView.Adapter adapter){
-        this.recyclerView = recyclerView;
+    public RecyclerLazyLoad(FragmentActivity activity){//, RecyclerView recyclerView, RecyclerView.Adapter adapter){
         this.activity = activity;
-        this.adapter = adapter;
     }
-    public RecyclerLazyLoad(RecyclerView recyclerView, RecyclerView.Adapter adapter){
-        this.recyclerView = recyclerView;
+
+    public void setAdapter(RecyclerView.Adapter adapter) {
         this.adapter = adapter;
     }
 
-    public void setLoadInterface(LoadResponseListener loadInterface) {
-        this.loadInterface = loadInterface;
+    public void setRecyclerView(RecyclerView recyclerView) {
+        this.recyclerView = recyclerView;
     }
 
     public void setSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
         this.swipeRefreshLayout = swipeRefreshLayout;
         setRefresh();
+    }
+
+
+    public void setLoadInterface(LoadResponseListener loadInterface) {
+        this.loadInterface = loadInterface;
     }
 
     public void setEmptyView(View emptyView) {
@@ -104,7 +107,7 @@ public class RecyclerLazyLoad {
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
     }
 
-    public void setAdapter(Context context) {
+    /*public void setAdapter(Context context) {
         this.recyclerView.setItemAnimator(RecyclerViewUtils.getAnimator());
         this.recyclerView.setLayoutManager(RecyclerViewUtils.getLayoutManager(context,false));
         if(activity!=null) {
@@ -114,7 +117,7 @@ public class RecyclerLazyLoad {
         } else {
             recyclerView.setAdapter(adapter);
         }
-    }
+    }*/
 
     private void setScroll() {
 
