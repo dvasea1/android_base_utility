@@ -112,7 +112,7 @@ public class RecyclerLazyLoad {
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
     }
 
-    /*public void setAdapter(Context context) {
+    public void setAdapter(Context context) {
         this.recyclerView.setItemAnimator(RecyclerViewUtils.getAnimator());
         this.recyclerView.setLayoutManager(RecyclerViewUtils.getLayoutManager(context,false));
         if(activity!=null) {
@@ -122,7 +122,7 @@ public class RecyclerLazyLoad {
         } else {
             recyclerView.setAdapter(adapter);
         }
-    }*/
+    }
 
     private void setScroll() {
 

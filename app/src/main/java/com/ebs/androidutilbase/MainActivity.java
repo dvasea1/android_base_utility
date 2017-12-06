@@ -29,10 +29,11 @@ public class MainActivity extends BaseFragmentActivity {
     @Override
     public void onActivityCreated() {
         super.onActivityCreated();
-        changeFragment(R.id.navi,MyFragment.newInstance(),true,true,false);
+        changeFragment(R.id.root,MyFragment.newInstance(),true,true,true);
 
     }
 
-
-
+    public void change(){
+        changeFragment(R.id.root,NewFragment.newInstance(),true,true,true);
+    }
 }

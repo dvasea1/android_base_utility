@@ -26,13 +26,4 @@
 </RelativeLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/navi"
-        android:layout_below="@+id/nav"
-        android:background="#599b47"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-
 </RelativeLayout>
