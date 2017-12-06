@@ -47,6 +47,11 @@ public class RecyclerLazyLoad {
     public RecyclerLazyLoad(FragmentActivity activity){//, RecyclerView recyclerView, RecyclerView.Adapter adapter){
         this.activity = activity;
     }
+    public RecyclerLazyLoad(FragmentActivity activity, RecyclerView recyclerView, RecyclerView.Adapter adapter){
+        this.activity = activity;
+        this.recyclerView = recyclerView;
+        this.adapter = adapter;
+    }
 
     public void setAdapter(RecyclerView.Adapter adapter) {
         this.adapter = adapter;
