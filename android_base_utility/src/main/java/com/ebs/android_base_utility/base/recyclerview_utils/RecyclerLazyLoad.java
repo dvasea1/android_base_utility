@@ -47,11 +47,12 @@ public class RecyclerLazyLoad {
     public RecyclerLazyLoad(FragmentActivity activity){//, RecyclerView recyclerView, RecyclerView.Adapter adapter){
         this.activity = activity;
     }
-    public RecyclerLazyLoad(FragmentActivity activity, RecyclerView recyclerView, RecyclerView.Adapter adapter){
+
+    /*public RecyclerLazyLoad(FragmentActivity activity, RecyclerView recyclerView, RecyclerView.Adapter adapter){
         this.activity = activity;
         this.recyclerView = recyclerView;
         this.adapter = adapter;
-    }
+    }*/
 
     public void setAdapter(RecyclerView.Adapter adapter) {
         this.adapter = adapter;
@@ -80,8 +81,25 @@ public class RecyclerLazyLoad {
         this.ResourceIdRoot = ResourceIdRoot;
         this.ResourceIdProgress = ResourceIdProgress;
     }
+    public void init(RecyclerView.ItemAnimator animator, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration){
+        this.recyclerView.setItemAnimator(animator);
+        this.recyclerView.setLayoutManager(layoutManager);
+        if(itemDecoration!=null) {
+            this.recyclerView.addItemDecoration(itemDecoration);
+        }
+        if(activity!=null) {
+            if(headerAndFooterRecyclerViewAdapter == null) {
+                headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
+            }
+            this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
+            setScroll();
+        } else {
+            this.recyclerView.setAdapter(adapter);
+        }
+        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+    }
 
-    public void setAdapter(RecyclerView.ItemAnimator animator, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration){
+    /*public void setAdapter(RecyclerView.ItemAnimator animator, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration){
         this.recyclerView.setItemAnimator(animator);
         this.recyclerView.setLayoutManager(layoutManager);
         if(itemDecoration!=null) {
@@ -123,7 +141,7 @@ public class RecyclerLazyLoad {
             recyclerView.setAdapter(adapter);
         }
     }
-
+*/
     private void setScroll() {
 
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
