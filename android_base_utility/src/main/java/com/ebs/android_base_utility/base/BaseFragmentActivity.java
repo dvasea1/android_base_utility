@@ -5,7 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.Nullable;
+
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,12 @@ import com.ebs.android_base_utility.base.util.StatusBarUtil;
 import com.google.gson.Gson;
 
 import butterknife.ButterKnife;
+import me.yokeyword.fragmentation.SupportActivity;
 
-public abstract class BaseFragmentActivity extends FragmentActivity implements BaseInterface {
+public abstract class BaseFragmentActivity extends SupportActivity implements BaseInterface {
 
     protected View loadingView;
-    protected FragmentActivity thisActivity;
+    protected SupportActivity thisActivity;
     private BroadcastReceiver receiver;
     private View topBar;
 
