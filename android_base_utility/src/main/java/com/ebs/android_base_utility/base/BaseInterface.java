@@ -10,7 +10,5 @@ public interface BaseInterface {
     @LayoutRes
     int getLayoutResourceIdLoading();
     int getRootLoadingViewResId();
-    void onCreated();
-    void onViewCreated();
-    void onActivityCreated();
+
 }

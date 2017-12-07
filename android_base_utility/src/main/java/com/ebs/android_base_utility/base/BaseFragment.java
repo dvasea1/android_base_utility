@@ -32,30 +32,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import me.yokeyword.fragmentation.SupportFragment;
 
 
-public abstract class BaseFragment extends Fragment implements BaseInterface {
+public abstract class BaseFragment extends SupportFragment implements BaseInterface {
 
     protected View view;
     protected View loadingView;
     protected LayoutInflater inflater;
     // private boolean isActivityCreated = false;
-    private List<Integer> integers = new ArrayList<>();
-    private boolean isFragmentVisible = false;
+   // private List<Integer> integers = new ArrayList<>();
+   // private boolean isFragmentVisible = false;
     private BroadcastReceiver receiver;
     View topBar;
-    String className;
+    //String className;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("BASE YYY onCreate "+getClass().getCanonicalName());
-        removeKeyboard();
-        onCreated();
-        className = getClass().getCanonicalName();
+       // removeKeyboard();
+        //onCreated();
+       // className = getClass().getCanonicalName();
     }
 
-    @Override
+    /*@Override
     public Animation onCreateAnimation (int transit, boolean enter, int nextAnim) {
         Animation anim = super.onCreateAnimation(transit, enter, nextAnim);
         if (anim == null && nextAnim != 0) {
@@ -107,7 +108,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
             }
         }
         return anim;
-    }
+    }*/
 
     @Nullable
     @Override
@@ -115,12 +116,12 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
         this.inflater = inflater;
         view = inflater.inflate(getLayoutResourceId(), container, false);
         ButterKnife.bind(this, view);
-        createLoadingView(getRootLoadingViewResId());
-        onViewCreated();
+
+       // onViewCreated();
         return view;
     }
 
-    @Override
+   /* @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         isFragmentVisible = isVisibleToUser;
@@ -139,22 +140,30 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
             }
         }
     }
+*/
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        System.out.println("BASE YYY onActivityCreated "+getClass().getCanonicalName());
-        //isActivityCreated = true;
-        isFragmentVisible = getUserVisibleHint();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         getNavigation((ViewGroup) view);
         if(topBar != null){
             if(topBar instanceof NavigationBar){
                 StatusBarUtil.addStatus(getActivity(),(LinearLayout) topBar);
             }
         }
+        createLoadingView(getRootLoadingViewResId());
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        System.out.println("BASE YYY onActivityCreated "+getClass().getCanonicalName());
+        //isActivityCreated = true;
+       // isFragmentVisible = getUserVisibleHint();
+
+    }
+
+    /*@Override
     public void onPause() {
         super.onPause();
         System.out.println("BASE YYY onPause "+getClass().getCanonicalName());
@@ -164,7 +173,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
     public void onResume() {
         super.onResume();
         System.out.println("BASE YYY onResume "+getClass().getCanonicalName());
-    }
+    }*/
 
     private void getNavigation(ViewGroup parent) {
         int childCount = parent.getChildCount();
@@ -174,18 +183,22 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
                 getNavigation((ViewGroup) child);
                 if (child instanceof NavigationBar) {
                     topBar = child;
+                    System.out.println("child is "+child);
                     break;
                 }
             }
         }
     }
     private void createLoadingView(int resId){
-        RelativeLayout rootView = view.findViewById(resId);
-        if(rootView == null){
-            loadingView = new LoadingView().getProgressBar(getActivity(),view,getLayoutResourceIdLoading());
-        } else {
-            loadingView = new LoadingView().getProgressBar(getActivity(),rootView,getLayoutResourceIdLoading());
-        }
+        try {
+            RelativeLayout rootView = view.findViewById(resId);
+            if(rootView == null){
+                loadingView = new LoadingView().getProgressBar(getActivity(),view,getLayoutResourceIdLoading());
+            } else {
+                loadingView = new LoadingView().getProgressBar(getActivity(),rootView,getLayoutResourceIdLoading());
+            }
+        } catch (Exception E){}
+
     }
 
     @Override
@@ -203,7 +216,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
         return 0;
     }
 
-    @Override
+   /* @Override
     public void onCreated() {
 
     }
@@ -218,7 +231,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
         integers.add(1);
         //isActivityCreated = false;
         System.out.println("XXX onActivityCreated "+getClass().getCanonicalName());
-    }
+    }*/
 
     public void registerBroadCastReceiver(final LocalBroadCastReceiver broadcastReceiver){
         receiver = new BroadcastReceiver() {
@@ -242,7 +255,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
         LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
     }
 
-    protected void changeFragment(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
+   /* protected void changeFragment(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
         try {
             FragmentManager fragmentManager = getChildFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -262,24 +275,24 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
             }
             fragmentTransaction.commit();
         } catch (Exception e){e.printStackTrace();}
-    }
+    }*/
 
-    public void pop(){
+  /*  public void pop(){
         if(getActivity() != null && isAdded()){
             getActivity().onBackPressed();
         }
-    }
+    }*/
 
-    public void hideKeyboard(View view) {
+    /*public void hideKeyboard(View view) {
         if(view != null) {
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             if(imm != null) {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         }
-    }
+    }*/
 
-    public void removeKeyboard(){
+   /* public void removeKeyboard(){
         try {
             (getActivity()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             if (((getActivity()).getCurrentFocus() != null) && ((getActivity()).getCurrentFocus().getWindowToken() != null)) {
@@ -291,12 +304,13 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        removeKeyboard();
+        hideSoftInput();
+        //removeKeyboard();
         if(receiver!=null){
             LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(receiver);
         }

@@ -5,17 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.ebs.android_base_utility.R;
 import com.ebs.android_base_utility.base.util.LoadingView;
 import com.ebs.android_base_utility.base.util.LocalBroadCastReceiver;
 import com.ebs.android_base_utility.base.util.NavigationBar;
@@ -38,9 +34,9 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements B
         ButterKnife.bind(this);
         thisActivity= this;
         createLoadingView(getRootLoadingViewResId());
-        onCreated();
+       /* onCreated();
         onViewCreated();
-        onActivityCreated();
+        onActivityCreated();*/
         StatusBarUtil.setStatusTintColor(thisActivity);
         getNavigation((ViewGroup) getWindow().getDecorView().getRootView());
         if(topBar != null){
@@ -80,7 +76,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements B
         return 0;
     }
 
-    @Override
+   /* @Override
     public void onCreated() {
 
     }
@@ -93,14 +89,14 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements B
     @Override
     public void onActivityCreated() {
 
-    }
+    }*/
 
     private void createLoadingView(int resId){
         RelativeLayout rootView = findViewById(resId);
         loadingView = new LoadingView().getProgressBar(this,rootView,getLayoutResourceIdLoading());
     }
 
-    public void changeFragment(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
+    /*public void changeFragment(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
         try {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -164,7 +160,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements B
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStack();
     }
-
+*/
     public Context getDialogContext() {
         Context context;
         if (getParent() != null)

@@ -29,12 +29,12 @@ public class MyFragment extends BaseFragment {
         view.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).change();
+                //((MainActivity)getActivity()).remove();
             }
         });
     }
 
-    @Override
+   /* @Override
     public void onActivityCreated() {
         super.onActivityCreated();
 
@@ -42,5 +42,5 @@ public class MyFragment extends BaseFragment {
 
     private void initAdapter(){
             //adapter = new AdapterTest()
-    }
+    }*/
 }

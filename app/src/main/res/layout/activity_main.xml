@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
 
-    android:id="@+id/root"
+    android:id="@+id/fl_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout
-    android:id="@+id/nav"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.ebs.android_base_utility.base.util.NavigationBar
-            android:background="#c12727"
-            android:orientation="vertical"
-            android:id="@+id/top1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"></RelativeLayout>
-        </com.ebs.android_base_utility.base.util.NavigationBar>
-    </RelativeLayout>
-</RelativeLayout>
 
 
-</RelativeLayout>
+
+</FrameLayout>

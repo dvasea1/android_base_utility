@@ -1,6 +1,10 @@
 package com.ebs.androidutilbase;
 
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -12,28 +16,20 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 
-public class MainActivity extends BaseFragmentActivity {
-
-    @Override
-    public int getLayoutResourceIdLoading() {
-        return R.layout.loading;
-    }
+public class MainActivity extends SupportActivity {
 
     @Override
-    public int getLayoutResourceId() {
-        return R.layout.activity_main;
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
-    @Override
-    public void onActivityCreated() {
-        super.onActivityCreated();
-        changeFragment(R.id.root,MyFragment.newInstance(),true,true,true);
 
-    }
+        setFragmentAnimator(new DefaultHorizontalAnimator());
 
-    public void change(){
-        changeFragment(R.id.root,NewFragment.newInstance(),true,true,true);
+        loadRootFragment(R.id.fl_container,MainTabHostFragment.newInstance());
     }
 }
