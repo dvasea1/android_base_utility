@@ -33,7 +33,11 @@ public class NewFragment extends BaseFragment {
     }
 
     @OnClick(R.id.bac) void click(){
-        pop();
+        extraTransaction().setCustomAnimations(R.anim.fragment_slide_in_bottom,R.anim.v_fragment_pop_exit,R.anim.v_fragment_pop_enter,R.anim.fragment_slide_out_bottom).start(FragmentPopup.newInstance());
+        //((MainActivity)getActivity()).startPopup();
+    }
+    @OnClick(R.id.left) void left(){
+        start(MyFragment.newInstance());
     }
 
     /*   @Override

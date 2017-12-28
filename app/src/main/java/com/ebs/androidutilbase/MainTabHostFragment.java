@@ -119,4 +119,10 @@ public class MainTabHostFragment extends SupportFragment {
             }
         });
     }
+    public void startPopup(){
+
+        SupportFragment supportFragment = FragmentPopup.newInstance();
+        supportFragment.setFragmentAnimator(new VerticalAnimator());
+        start(supportFragment);
+    }
 }

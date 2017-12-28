@@ -31,6 +31,6 @@ public class FirstHomeFragment extends BaseFragment {
     }
 
     @OnClick(R.id.button) void click(){
-        ((SupportFragment)( getParentFragment()).getParentFragment()).start(NewFragment.newInstance());
+        start(NewFragment.newInstance());
     }
 }

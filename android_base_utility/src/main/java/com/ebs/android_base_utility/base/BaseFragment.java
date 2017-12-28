@@ -51,6 +51,7 @@ public abstract class BaseFragment extends SupportFragment implements BaseInterf
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("BASE YYY onCreate "+getClass().getCanonicalName());
+        hideSoftInput();
        // removeKeyboard();
         //onCreated();
        // className = getClass().getCanonicalName();

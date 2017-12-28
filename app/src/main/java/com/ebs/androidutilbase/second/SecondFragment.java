@@ -39,7 +39,7 @@ public class SecondFragment extends BaseFragment {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        if (findChildFragment(FirstHomeFragment.class) == null) {
+        if (findChildFragment(SecondHomeFragment.class) == null) {
             loadRootFragment(R.id.second_container, SecondHomeFragment.newInstance());
         }
     }

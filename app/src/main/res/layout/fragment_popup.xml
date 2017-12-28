@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:background="#39cf70"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <Button
-    android:text="popuip"
-    android:layout_centerInParent="true"
-    android:id="@+id/bac"
+    android:layout_marginTop="50dp"
+    android:text="back"
+    android:id="@+id/back"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
-
     <Button
-        android:layout_marginTop="50dp"
-        android:text="left"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <EditText
+        android:id="@+id/newfrag"
         android:layout_centerInParent="true"
-        android:layout_width="match_parent"
+        android:text="new fragm"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>
