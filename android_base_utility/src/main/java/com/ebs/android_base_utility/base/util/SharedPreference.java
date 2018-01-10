@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 
 public class SharedPreference {
 
-	public static final String PREFS_NAME = "preferences";
+	private static final String PREFS_NAME = "preferences";
 
 	private static SharedPreference shared = new SharedPreference( );
 
@@ -19,20 +19,22 @@ public class SharedPreference {
 	}
 
 	public  void SaveSharedPreference(Context context,final String key, final String value){
+		try {
+			SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+			Editor editor = settings.edit();
 
-		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		Editor editor = settings.edit();
+			editor.putString(key, value);
 
-		editor.putString(key, value);
-
-		editor.commit();
-
+			editor.apply();
+		} catch (Exception e){e.printStackTrace();}
 	}
 
-	public  String GetSharedPreference(Context context,String key,String defaultValue){
-
-		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		String value = settings.getString(key, defaultValue);
-		return value;
+	public String GetSharedPreference(Context context,String key,String defaultValue){
+		try {
+			SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+			String value = settings.getString(key, defaultValue);
+			return value;
+		} catch (Exception e){e.printStackTrace();}
+		return "";
 	}
 }

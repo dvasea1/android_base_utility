@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +34,7 @@ public abstract class BaseFragmentActivity extends SupportActivity implements Ba
         ButterKnife.bind(this);
         thisActivity= this;
         createLoadingView(getRootLoadingViewResId());
-       /* onCreated();
-        onViewCreated();
-        onActivityCreated();*/
+
         StatusBarUtil.setStatusTintColor(thisActivity);
         getNavigation((ViewGroup) getWindow().getDecorView().getRootView());
         if(topBar != null){
@@ -78,91 +74,10 @@ public abstract class BaseFragmentActivity extends SupportActivity implements Ba
         return 0;
     }
 
-   /* @Override
-    public void onCreated() {
-
-    }
-
-    @Override
-    public void onViewCreated() {
-
-    }
-
-    @Override
-    public void onActivityCreated() {
-
-    }*/
-
     private void createLoadingView(int resId){
         RelativeLayout rootView = findViewById(resId);
         loadingView = new LoadingView().getProgressBar(this,rootView,getLayoutResourceIdLoading());
     }
-
-    /*public void changeFragment(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
-        try {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if(animate) {
-                fragmentTransaction.setCustomAnimations(R.anim.fragment_slide_left_enter,
-                        R.anim.fragment_slide_left_exit,
-                      0,
-                        R.anim.fragment_slide_right_exit);
-            }
-            if(replace) {
-                fragmentTransaction.replace(idContainer, fragment);
-            } else {
-                fragmentTransaction.add(idContainer, fragment);
-            }
-            if(addToBackStack) {
-                fragmentTransaction.addToBackStack(fragment.getClass().getName());
-            }
-            fragmentTransaction.commit();
-        } catch (Exception e){e.printStackTrace();}
-    }
-
-    public void changeFragmentPopup(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
-        try {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if(animate) {
-                fragmentTransaction.setCustomAnimations(R.anim.fragment_slide_in_bottom, 0,0, R.anim.fragment_slide_out_bottom);
-            }
-            if(replace) {
-                fragmentTransaction.replace(idContainer, fragment);
-            } else {
-                fragmentTransaction.add(idContainer, fragment);
-            }
-            if(addToBackStack) {
-                fragmentTransaction.addToBackStack(fragment.getClass().getName());
-            }
-            fragmentTransaction.commit();
-        } catch (Exception e){e.printStackTrace();}
-    }
-
-    public void changeFragmentPopupBottom(int idContainer, Fragment fragment, boolean addToBackStack,boolean animate,boolean replace){
-        try {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if(animate) {
-                fragmentTransaction.setCustomAnimations(R.anim.fragment_slide_in_top, R.anim.fragment_slide_out_top,R.anim.fragment_slide_in_top, R.anim.fragment_slide_out_top);
-            }
-            if(replace) {
-                fragmentTransaction.replace(idContainer, fragment);
-            } else {
-                fragmentTransaction.add(idContainer, fragment);
-            }
-            if(addToBackStack) {
-                fragmentTransaction.addToBackStack(fragment.getClass().getName());
-            }
-            fragmentTransaction.commit();
-        } catch (Exception e){e.printStackTrace();}
-    }
-
-    public void hideFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.popBackStack();
-    }
-*/
     public Context getDialogContext() {
         Context context;
         if (getParent() != null)
