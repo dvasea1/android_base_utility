@@ -60,64 +60,17 @@ registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
      * Remove all elements from the list.
      */
     public void clear() {
-        final int size = getItemCount();
         mObjects.clear();
         notifyDataSetChanged();
-       // if(dataEmptyObserver!=null)dataEmptyObserver.onDataChanged(false);
     }
 
-    /*private RecyclerView.AdapterDataObserver adapterDataObserver = new RecyclerView.AdapterDataObserver() {
-        @Override
-        public void onChanged() {
-            checkIfEmpty();
-        }
-
-        @Override
-        public void onItemRangeInserted(int positionStart, int itemCount) {
-            checkIfEmpty();
-        }
-
-        @Override
-        public void onItemRangeRemoved(int positionStart, int itemCount) {
-            checkIfEmpty();
-        }
-    };*/
-
-    /*@Override
-    public int getItemCount() {
-        if(mObjects.size()>0){
-            if(dataEmptyObserver!=null)dataEmptyObserver.onDataChanged(false);
-        } else {
-            if(dataEmptyObserver!=null)dataEmptyObserver.onDataChanged(true);
-        }
-        return mObjects.size();
-    }*/
-
     private void checkIfEmpty(){
-        /*if(DEBUG){
-            System.out.println("dataEmptyObserver isEmpty "+isEmpty+" emptyView "+emptyView);
-        }*/
         if (emptyView != null) {
             final boolean emptyViewVisible =
                     getItemCount() == 0;
             emptyView.setVisibility(emptyViewVisible ? View.VISIBLE : View.GONE);
-            //setVisibility(emptyViewVisible ? View.GONE : View.VISIBLE);
         }
     }
-
-    /*DataEmptyObserver dataEmptyObserver = new DataEmptyObserver() {
-        @Override
-        public void onDataChanged(boolean isEmpty) {
-            if(DEBUG){
-                System.out.println("dataEmptyObserver isEmpty "+isEmpty+" emptyView "+emptyView);
-            }
-            if(isEmpty){
-                if(emptyView!=null)emptyView.setVisibility(View.VISIBLE);
-            } else {
-                if(emptyView!=null)emptyView.setVisibility(View.GONE);
-            }
-        }
-    };*/
 
     public T getItem(final int position) {
         return mObjects.get(position);

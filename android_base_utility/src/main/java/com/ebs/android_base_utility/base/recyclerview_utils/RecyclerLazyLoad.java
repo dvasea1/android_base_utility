@@ -2,19 +2,15 @@ package com.ebs.android_base_utility.base.recyclerview_utils;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +43,6 @@ public class RecyclerLazyLoad {
     public RecyclerLazyLoad(FragmentActivity activity){//, RecyclerView recyclerView, RecyclerView.Adapter adapter){
         this.activity = activity;
     }
-
-    /*public RecyclerLazyLoad(FragmentActivity activity, RecyclerView recyclerView, RecyclerView.Adapter adapter){
-        this.activity = activity;
-        this.recyclerView = recyclerView;
-        this.adapter = adapter;
-    }*/
 
     public void setAdapter(RecyclerView.Adapter adapter) {
         this.adapter = adapter;
@@ -88,9 +78,7 @@ public class RecyclerLazyLoad {
             this.recyclerView.addItemDecoration(itemDecoration);
         }
         if(activity!=null) {
-            //if(headerAndFooterRecyclerViewAdapter == null) {
                 headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
-           // }
             this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
             setScroll();
         } else {
@@ -99,56 +87,9 @@ public class RecyclerLazyLoad {
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
     }
 
-    /*public void setAdapter(RecyclerView.ItemAnimator animator, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration){
-        this.recyclerView.setItemAnimator(animator);
-        this.recyclerView.setLayoutManager(layoutManager);
-        if(itemDecoration!=null) {
-            this.recyclerView.addItemDecoration(itemDecoration);
-        }
-        if(activity!=null) {
-            headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
-            this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
-            setScroll();
-        } else {
-            this.recyclerView.setAdapter(adapter);
-        }
-        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-    }
-    public void setAdapter(RecyclerView.ItemAnimator animator, LinearLayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration){
-        this.recyclerView.setItemAnimator(animator);
-        this.recyclerView.setLayoutManager(layoutManager);
-        if(itemDecoration!=null) {
-            this.recyclerView.addItemDecoration(itemDecoration);
-        }
-        if(activity!=null) {
-            headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
-            this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
-            setScroll();
-        } else {
-            this.recyclerView.setAdapter(adapter);
-        }
-        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-    }
-
-    public void setAdapter(Context context) {
-        this.recyclerView.setItemAnimator(RecyclerViewUtils.getAnimator());
-        this.recyclerView.setLayoutManager(RecyclerViewUtils.getLayoutManager(context,false));
-        if(activity!=null) {
-            headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(this.adapter);
-            this.recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
-            setScroll();
-        } else {
-            recyclerView.setAdapter(adapter);
-        }
-    }
-*/
     private void setScroll() {
-
         recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
-            // Keeps track of the overall vertical offset in the list
             int verticalOffset;
-
-            // Determines the scroll UP/DOWN direction
             boolean scrollingUp;
 
             @Override
@@ -166,15 +107,11 @@ public class RecyclerLazyLoad {
                         return;
                     }
                     if (isMoreDataAvailable) {
-                        // loading more
-                        // adapter.addFooterView(new LoadingFooter(getDialogContext()));
                         RecyclerViewUtils.setFooterViewState(activity, recyclerView, LoadingFooter.State.Loading, resourceLayout, ResourceIdRoot, ResourceIdProgress);
                         if (loadInterface != null) loadInterface.onLoadMore();
-                        //getFolders(false,null);
                     } else {
                         //the end
                         RecyclerViewUtils.setFooterViewState(activity, recyclerView, LoadingFooter.State.TheEnd, resourceLayout, ResourceIdRoot, ResourceIdProgress);
-                        //headerAndFooterRecyclerViewAdapter.removeFooterView(headerAndFooterRecyclerViewAdapter.getFooterView());
                     }
                 }
             }
@@ -190,24 +127,14 @@ public class RecyclerLazyLoad {
                     tToolbar.animate().cancel();
                     if (scrollingUp) {
                         if (toolbarYOffset < tToolbar.getHeight()) {
-                            if (verticalOffset > tToolbar.getHeight()) {
-                                //toolbarSetElevation(TOOLBAR_ELEVATION);
-                            }
                             tToolbar.setTranslationY(-toolbarYOffset);
                         } else {
-                            // toolbarSetElevation(0);
                             tToolbar.setTranslationY(-tToolbar.getHeight());
                         }
                     } else {
                         if (toolbarYOffset < 0) {
-                            if (verticalOffset <= 0) {
-                                //toolbarSetElevation(0);
-                            }
                             tToolbar.setTranslationY(0);
                         } else {
-                            if (verticalOffset > tToolbar.getHeight()) {
-                                // toolbarSetElevation(TOOLBAR_ELEVATION);
-                            }
                             tToolbar.setTranslationY(-toolbarYOffset);
                         }
                     }
@@ -274,9 +201,6 @@ public class RecyclerLazyLoad {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    //isMoreDataAvailable = true;
-                   // offset = 0;
-                   // setNext(null);
                     reset();
                     loadInterface.onRefresh();
                 }
@@ -345,18 +269,11 @@ public class RecyclerLazyLoad {
     }
 
     public void reset(){
-        /*if(headerAndFooterRecyclerViewAdapter.getFooterViewsCount()>0) {
-            headerAndFooterRecyclerViewAdapter.removeFooterView(headerAndFooterRecyclerViewAdapter.getFooterView());
-        }*/
         if(endlessScroll) {
             RecyclerViewUtils.setFooterViewState(activity, recyclerView, LoadingFooter.State.TheEnd, resourceLayout,ResourceIdRoot,ResourceIdProgress);
         }
         ((BaseAdapterRecycler) adapter).setEmptyView(null);
         ((BaseAdapterRecycler)adapter).clear();
-     /*   final int size = adapter.getItemCount();
-        objects.clear();
-        adapter.notifyItemRangeRemoved(0, size);*/
-
 
         setMoreDataAvailable(true);
         setOffset(0);

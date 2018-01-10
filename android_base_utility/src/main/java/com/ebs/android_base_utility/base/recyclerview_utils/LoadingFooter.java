@@ -26,16 +26,6 @@ public class LoadingFooter extends RelativeLayout {
         init(context);
     }
 
-   /* public LoadingFooter(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
-    }
-
-    public LoadingFooter(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context);
-    }*/
-
     public void init(Context context) {
 
         inflate(context,resourceLayout, this);
