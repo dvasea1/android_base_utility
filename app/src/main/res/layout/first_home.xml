@@ -12,9 +12,34 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
     </com.ebs.android_base_utility.base.util.NavigationBar>
-    <Button
+    <com.ebs.android_base_utility.base.util.Button
+        android:background="@drawable/round_blue_unselected"
         android:layout_centerInParent="true"
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="50dp" >
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_selector"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </com.ebs.android_base_utility.base.util.Button>
+
+    <com.andexert.library.RippleView
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/more"
+        android:layout_width="?android:actionBarSize"
+        android:layout_height="?android:actionBarSize"
+        rv_centered="true">
+
+        <ImageView
+            android:layout_width="?android:actionBarSize"
+            android:layout_height="?android:actionBarSize"
+            android:src="@drawable/icon_selector"
+            android:layout_centerInParent="true"
+            android:padding="10dp" />
+
+    </com.andexert.library.RippleView>
 </RelativeLayout>

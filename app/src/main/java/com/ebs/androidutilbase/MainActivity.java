@@ -23,7 +23,7 @@ import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
 
 public class MainActivity extends BaseFragmentActivity {
-    MainTabHostFragment supportFragment;
+    TestFrag supportFragment;
 
     @Override
     public int getLayoutResourceId() {
@@ -34,7 +34,7 @@ public class MainActivity extends BaseFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        supportFragment= MainTabHostFragment.newInstance();
+        supportFragment= TestFrag.newInstance();
 
         setFragmentAnimator(new DefaultHorizontalAnimator());
 

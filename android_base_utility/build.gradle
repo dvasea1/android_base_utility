@@ -5,7 +5,7 @@ android {
     buildToolsVersion '26.0.2'
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -32,24 +32,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
-
-    // appcompat-v7 is required
     compile 'me.yokeyword:fragmentation:1.1.8'
-
-// If you don't want to extends SupportActivity/Fragment and would like to customize your own support, just rely on fragmentation-core
-// compile 'me.yokeyword:fragmentation-core:1.1.8'
-
-// To get SwipeBack feature, rely on both fragmentation & fragmentation-swipeback
     compile 'me.yokeyword:fragmentation:1.1.8'
-// Swipeback is based on fragmentation. Refer to SwipeBackActivity/Fragment for your Customized SupportActivity/Fragment
     compile 'me.yokeyword:fragmentation-swipeback:1.1.8'
-
-// To simplify the communication between Fragments.
     compile 'me.yokeyword:eventbus-activity-scope:1.1.0'
 }

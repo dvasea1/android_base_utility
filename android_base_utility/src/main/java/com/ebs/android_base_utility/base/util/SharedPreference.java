@@ -32,8 +32,7 @@ public class SharedPreference {
 	public String GetSharedPreference(Context context,String key,String defaultValue){
 		try {
 			SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-			String value = settings.getString(key, defaultValue);
-			return value;
+			return settings.getString(key, defaultValue);
 		} catch (Exception e){e.printStackTrace();}
 		return "";
 	}

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.ebs.android_base_utility.R;
 import com.ebs.android_base_utility.base.util.LoadingView;
 import com.ebs.android_base_utility.base.util.LocalBroadCastReceiver;
 import com.ebs.android_base_utility.base.util.NavigationBar;
@@ -80,13 +81,15 @@ public abstract class BaseFragment extends SupportFragment implements BaseInterf
             } else {
                 loadingView = new LoadingView().getProgressBar(getActivity(),rootView,getLayoutResourceIdLoading());
             }
-        } catch (Exception E){}
+        } catch (Exception E){
+            //
+        }
 
     }
 
     @Override
     public int getLayoutResourceId() {
-        return 0;
+        return R.layout.activity;
     }
 
     @Override
@@ -96,8 +99,9 @@ public abstract class BaseFragment extends SupportFragment implements BaseInterf
 
     @Override
     public int getLayoutResourceIdLoading() {
-        return 0;
+        return R.layout.loading_view;
     }
+
 
     public void registerBroadCastReceiver(final LocalBroadCastReceiver broadcastReceiver){
         receiver = new BroadcastReceiver() {

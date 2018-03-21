@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.ebs.android_base_utility.R;
 import com.ebs.android_base_utility.base.util.LoadingView;
 import com.ebs.android_base_utility.base.util.LocalBroadCastReceiver;
 import com.ebs.android_base_utility.base.util.NavigationBar;
@@ -61,7 +62,7 @@ public abstract class BaseFragmentActivity extends SupportActivity implements Ba
 
     @Override
     public int getLayoutResourceId() {
-        return 0;
+        return R.layout.activity;
     }
 
     @Override
@@ -71,7 +72,7 @@ public abstract class BaseFragmentActivity extends SupportActivity implements Ba
 
     @Override
     public int getLayoutResourceIdLoading() {
-        return 0;
+        return R.layout.loading_view;
     }
 
     private void createLoadingView(int resId){
