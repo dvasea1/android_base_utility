@@ -87,6 +87,7 @@ public class RecyclerLazyLoad {
             this.recyclerView.setAdapter(adapter);
         }
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        setResourceLoading(R.layout.loading_footer,R.id.root,R.id.progressBar);
     }
 
     private void setScroll() {
