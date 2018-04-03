@@ -36,9 +36,9 @@ public class RecyclerLazyLoad {
     private SwipeRefreshLayout swipeRefreshLayout;
     private View tToolbar;
     private View emptyView;
-    private @LayoutRes  int resourceLayout = R.layout.loading_footer;
-    private @IdRes  int ResourceIdRoot = R.id.root;
-    private @IdRes  int ResourceIdProgress = R.id.progressBar;
+    private @LayoutRes  int resourceLayout ;
+    private @IdRes  int ResourceIdRoot ;
+    private @IdRes  int ResourceIdProgress;
     private Boolean next;
     private boolean endlessScroll = true;
 
