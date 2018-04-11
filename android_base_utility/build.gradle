@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
@@ -26,19 +27,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    implementation 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'me.yokeyword:fragmentation:1.1.8'
-    implementation 'me.yokeyword:fragmentation:1.1.8'
-    implementation 'me.yokeyword:fragmentation-swipeback:1.1.8'
-    implementation 'me.yokeyword:eventbus-activity-scope:1.1.0'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'me.yokeyword:fragmentation:1.1.8'
+    compile 'me.yokeyword:fragmentation:1.1.8'
+    compile 'me.yokeyword:fragmentation-swipeback:1.1.8'
+    compile 'me.yokeyword:eventbus-activity-scope:1.1.0'
 }
