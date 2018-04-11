@@ -1,13 +1,17 @@
 package com.ebs.android_base_utility.base.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
 import com.ebs.android_base_utility.R;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by Vasile-barbaros-Pc on 9/15/2016.
@@ -26,45 +30,24 @@ public class Button extends RelativeLayout {
         super(context, attrs, defStyle);
         init();
     }
-    void init(){
-       /* if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            StateListAnimator sla = AnimatorInflater.loadStateListAnimator(getContext(), R.animator.button_elevation);
-            setStateListAnimator(sla);
-        }*/
-       setOnClickListener(new OnClickListener() {
+    void init() {
+
+       setOnTouchListener(new OnTouchListener() {
+           @SuppressLint("ClickableViewAccessibility")
            @Override
-           public void onClick(View view) {
-               animateButton();
+           public boolean onTouch(View v, MotionEvent event) {
+               if(event.getAction() == MotionEvent.ACTION_UP){
+                   animateButton();
+               }
+               return true;
            }
        });
     }
 
     void animateButton() {
-        // Load the animation
         final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-       /* double animationDuration = 2f * 1000;
-        myAnim.setDuration((long)animationDuration);*/
-
-        // Use custom animation interpolator to achieve the bounce effect
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.07f, 20f);
-
         myAnim.setInterpolator(interpolator);
-
-        // Animate the button
         startAnimation(myAnim);
-
-       /* // Run button animation again after it finished
-        myAnim.setAnimationListener(new Animation.AnimationListener(){
-            @Override
-            public void onAnimationStart(Animation arg0) {}
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {}
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                //animateButton();
-            }
-        });*/
     }
 }

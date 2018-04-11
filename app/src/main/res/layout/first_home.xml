@@ -13,16 +13,11 @@
             android:layout_height="50dp"/>
     </com.ebs.android_base_utility.base.util.NavigationBar>
     <com.ebs.android_base_utility.base.util.Button
-        android:background="@drawable/round_blue_unselected"
+        android:background="#fff"
         android:layout_centerInParent="true"
         android:id="@+id/button"
         android:layout_width="100dp"
         android:layout_height="50dp" >
-        <ImageView
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_selector"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
 
     </com.ebs.android_base_utility.base.util.Button>
 

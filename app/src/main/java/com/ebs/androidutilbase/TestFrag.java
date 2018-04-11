@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.ebs.android_base_utility.base.BaseFragment;
 
+import butterknife.OnClick;
+
 /**
  * Created by barbaros.vasile on 3/21/2018.
  */
@@ -28,5 +30,8 @@ public class TestFrag extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+    @OnClick(R.id.button) void  click(){
+        System.out.println("click");
     }
 }
