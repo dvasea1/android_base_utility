@@ -32,8 +32,7 @@ public class Button extends RelativeLayout {
     }
     void init() {
 
-       setOnTouchListener(new OnTouchListener() {
-           @SuppressLint("ClickableViewAccessibility")
+       /*setOnTouchListener(new OnTouchListener() {
            @Override
            public boolean onTouch(View v, MotionEvent event) {
                if(event.getAction() == MotionEvent.ACTION_UP){
@@ -41,7 +40,7 @@ public class Button extends RelativeLayout {
                }
                return true;
            }
-       });
+       });*/
     }
 
     void animateButton() {
