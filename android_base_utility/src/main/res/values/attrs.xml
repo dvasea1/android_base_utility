@@ -6,4 +6,7 @@
     <declare-styleable name="FlowLayout_Layout">
         <attr name="android:layout_gravity" />
     </declare-styleable>
+    <declare-styleable name="Button">
+        <attr name="is_fullscreen" format="boolean"/>
+    </declare-styleable>
 </resources>
