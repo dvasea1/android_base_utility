@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$USER_HOME$/Desktop/android_base_util-master (1)/android_base_util-master/AndroidUtilBase.iml" filepath="$USER_HOME$/Desktop/android_base_util-master (1)/android_base_util-master/AndroidUtilBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidUtilBase V2.iml" filepath="$PROJECT_DIR$/AndroidUtilBase V2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Libraries-android_base_utility.iml" filepath="$PROJECT_DIR$/Libraries-android_base_utility.iml" />
       <module fileurl="file://$PROJECT_DIR$/android_base_utility/android_base_utility.iml" filepath="$PROJECT_DIR$/android_base_utility/android_base_utility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android_base_utility/android_base_utility-android_base_utility.iml" filepath="$PROJECT_DIR$/android_base_utility/android_base_utility-android_base_utility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
